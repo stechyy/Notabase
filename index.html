@@ -1,0 +1,395 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notabase</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&family=Nunito&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+<script src="databaseScript.js"></script>
+<script src="sweetalert2.min.js"></script>
+<link rel="stylesheet" href="sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+
+    <link id="css-style" rel="stylesheet" href="style.css">
+</head>
+<body onload="startLoadingData()">
+<div id="downloadQR-div">
+  <button onclick="downloadQRById()" id="generate-button"></button>
+   <a id="download-button" download="QRCodeWithMeaning.png"></a>
+   <br>
+   <br>
+  <div id="qr-code-container">
+    <div id="qr-code"></div>
+    <p id="qr-meaning"></p>
+  </div>
+</div>
+  <div style="display: none;" id="settings-screen" class="settings-screen">
+    <div id="settings-box" class="settings-box">
+        <div class="settings-sidebar">
+          <br>
+            <h2>Pengaturan</h2>
+            <br>
+            <ul>
+                <li id="account-li" class="active">Akun <ion-icon name="contacts"></ion-icon></li>
+                <li id="personalization-li">Personalisasi <ion-icon name="brush"></ion-icon></li>
+                <li id="manageApp-li">Kelola Aplikasi <ion-icon name="construct"></ion-icon></li>
+                <li id="backup-li">Backup & Restore <ion-icon name="refresh"></ion-icon></li>
+                
+                <li id="info-li">Info <ion-icon name="help-circle-outline"></ion-icon></li>
+            </ul>
+        </div>
+        <div class="settings-container">
+            <div class="settings-close"><ion-icon name="close" onclick="closeDiv()"></ion-icon></div>
+            <br>
+            <div class="marginazed">
+                <div id="account-tab" class="account-tab">
+                <h1 id="account-title">Akun</h1>
+                <br>
+                <div class="account-container">
+                <div class="circle-pp"></div>
+                <h2 id="username_h2">ERROR</h2>
+                <label id="rankLabel_2">ERROR</label>
+                </div>
+                <br>
+                <br>
+                <h3>Konfigurasi Akun</h3>
+                <button id="settings-nameChanger" onclick="nameChanger()">Ubah nama</button>
+                <br>
+                <button onclick="passwordChanger()">Ubah sandi</button>
+                <br>
+                <br>
+                <h3>Akun Administrator <ion-icon name="help-circle-outline" style="font-size: 14px;" onclick="helpBtn(1)"></h3>
+                <div class="chooser-btn">
+                <button onclick="toAdmin(1)" id="username1_btn" class="active"></button>
+                <br>
+                <button id="username2_btn" onclick="toAdmin(2)"></button>
+                </div>
+                <br>
+                <br>
+                <h3>Keluar</h3>
+                <button onclick="logoutButton()">Logout</button>
+                <br>
+                <br>
+                </div>
+                <div class="personalization-tab" style="display: none;" id="personalization-tab">
+                    <h1 id="personalization-title">Personalisasi</h1>
+                    <br>
+                    <h3>Tema</h3>
+                    <div class="chooser-btn">
+                        <button onclick="setTheme(1)" id="theme1" class="active">Ocean Light</button>
+                        <br>
+                        <button onclick="setTheme(2)" id="theme2">Dark Cyan</button>
+                        </div>
+                    <br>
+                    <h3>Ukuran Font</h3>
+                    <br>
+                    <h3>Mode Fullscreen</h3>
+                    <button id="fullscreenBtn" onclick="toggleFullscreen()">Aktif</button>
+                    <br>
+                    <br>
+                </div>
+                <div style="display: none;" id="manageApp-tab" class="manageApp-tab">
+                    <h1 id="manageApp-title">Kelola Aplikasi</h1>
+                    <br>
+                    <br>
+                    <h3>Bahasa</h3>
+                    <div class="chooser-btn">
+                    <button class="active">Indonesia</button>
+                    <br>
+                    <button onclick="alert('Fitur bahasa belum tersedia dalam versi ini!')">English</button>
+                    </div>
+                </div>
+                <div id="backup-tab" style="display: none;" class="backupAndRestore-tab">
+                    <input style="display: none;" id="file_input" type="file">
+                    <h1>Backup & Restore</h1>
+                    <br>
+                    <p><ion-icon name="help-circle"></ion-icon> Disini, anda dapat mengamankan/mencadangkan data anda, dan anda juga dapat memulihkan data anda yang telah hilang</p>
+                    <br>
+                    <h3>Backup <ion-icon name="help-circle-outline" style="font-size: 14px;" onclick="helpBtn(2)"></ion-icon></h3>
+                    <button onclick="downloadLocalStorage()">Backup data</button>
+                    <br>
+                    <br>
+                    <br>
+                    <h3>Restore <ion-icon name="help-circle-outline" style="font-size: 14px;" onclick="helpBtn(3)"></ion-icon></h3>
+                    <br>
+                    <label id="chooserBtn" onclick="chooseFile()" for="file_input">Pilih File backup</label>
+                    <button id="restoreBtn" style="display: none;" onclick="uploadToLocalStorage()">Restore</button>
+                    <br>
+                    <br>
+                </div>
+                <div id="info-tab" style="display: none;" class="info-tab">
+                    <h1>Info</h1>
+                      <br>
+                        <div class="app-version">
+                            <h2>Notabase</h2>
+                            <label for="">Version 1.0.1</label>
+                            <br><br>
+                            <p style="float: right;margin-right: 100px;">by StechyApp</p>
+                        </div>
+                   
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br><br>
+                    <h3>Notabase v1.0.1</h3>
+                    <button>What's new?</button>
+                    <br><br>
+                    <h3>Layanan & Masukan</h3>
+                    <p>Mari kita bersama-sama menciptakan aplikasi yang menakjubkan dan bebas dari bug dengan memberikan masukan!</p>
+                    <textarea id="dataTextarea" cols="40" rows="5"></textarea>
+                    <button onclick="sendToMail()"><ion-icon name="send"></ion-icon></button>
+                    <br>
+                    <br>
+                <br>
+                <h3>Reset Aplikasi</h3>
+                <button onclick="resetNew()">Reset</button>
+                <br>
+                <br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <div id="loading-screen" class="loading-screen">
+    <div class="loading-outline"></div>
+    <br>
+    <p id="load-text">Loading...</p>
+  </div>
+  <div id="login-screen" class="login-screen">
+   <div class="stars"></div>
+   <h2 id="welcome-banner" style="text-align: center;
+   font-weight: 400;">Selamat Datang di Notabase, Pengguna Baru!</h2>
+   <div style="height: 460px;display: non;width: 600px;" id="signup-container" class="login-container">
+    <br>
+    <br>
+    <h1>Buat Akun <ion-icon name="contact"></ion-icon></h1>
+    <br>
+    <div class="administrator-div" style="height: max-content;width: max-content;float: left;">
+    <label style="font-size: 16px;border-bottom: 1px solid rgb(119, 179, 189);">Akun Administrator</label>
+    <br><br>
+    <label class="login_label" for="signup_username_input">Username <ion-icon name="person"></ion-icon><span > <ion-icon id="u_alert" style="color: rgb(231, 15, 15);display: none;" name="alert"></ion-icon></span></label>
+    <br>
+    <input id="signup_username_input" type="text" autocomplete="0" autofocus>
+    <br>
+    <br>
+    <label class="login_label" for="signup_password_input">Password <ion-icon name="key"></ion-icon><ion-icon id="p_alert" style="color: rgb(231, 15, 15);display: none;" name="alert"></ion-icon></label>
+    <br>
+    <input id="signup_password_input" type="password">
+    <br><br>
+    <label for="signup_confirm_input">Konfirmasi Password <ion-icon name="key"></ion-icon> <ion-icon id="c_alert" style="color: rgb(231, 15, 15);display: none;" name="alert"></ion-icon></label><br>
+    <input id="signup_confirm_input" type="password">
+    <br>
+    </div>
+    <div class="administrator-div" style="height: max-content;width: max-content;float: left;">
+      <label style="font-size: 16px;border-bottom: 1px solid rgb(119, 179, 189);">Akun Non-Administrator</label>
+      <br><br>
+      <label class="login_label" for="signup_username_input_2">Username <ion-icon name="person"></ion-icon><span ><ion-icon id="u_alert2" style="color: rgb(231, 15, 15);display: none;" name="alert"></ion-icon></span></label>
+      <br>
+      <input id="signup_username_input_2" type="text" autocomplete="0" autofocus>
+      <br>
+      <br>
+      <label class="login_label" for="signup_password_input_2">Password <ion-icon name="key"></ion-icon> <ion-icon id="p_alert2" style="color: rgb(231, 15, 15);display: none;" name="alert"></ion-icon></label>
+      <br>
+      <input id="signup_password_input_2" type="password">
+      <br><br>
+      <label for="signup_confirm_input_2">Konfirmasi Password <ion-icon name="key"></ion-icon> <ion-icon id="c_alert2" style="color: rgb(231, 15, 15);display: none;" name="alert"></ion-icon></label><br>
+      <input id="signup_confirm_input_2" type="password">
+      <br>
+      </div>
+    <p id="wrong-label" style="color: rgb(231, 15, 15);font-size: 12.5px;text-align: center;margin-top: 16px;visibility: hidden;">Username / password salah!</p>
+    <button onclick="signUpButton()">Buat 2 Akun</button>
+    <br>
+  </div>
+    <div style="display: none;" id="login-container" class="login-container">
+      <br>
+      <br>
+      <h1>Login <ion-icon name="person"></ion-icon></h1>
+      <br>
+      <label class="login_label" for="username_input">Username <span ><ion-icon id="u_alert" style="color: rgb(231, 15, 15);display: none;" name="alert"></ion-icon></span></label>
+      <br>
+      <input id="username_input" type="text" autocomplete="0" autofocus>
+      <br>
+      <br>
+      <label class="login_label" for="password_input">Password <ion-icon id="p_alert" style="color: rgb(231, 15, 15);display: none;" name="alert"></ion-icon></label>
+      <br>
+      <input id="password_input" type="password">
+      <br>
+      <p id="wrong-label" style="color: rgb(231, 15, 15);font-size: 12.5px;text-align: center;margin-top: 16px;visibility: hidden;">Username / password salah!</p>
+      <button onclick="loginButton()">Login</button>
+      <br>
+    </div>
+  </div>
+    <div class="sidebar">
+        <br>
+        <div id="accountInfo">
+            <div class="account_pp"></div>
+            <div class="nameTag">
+                <h1 id="h1_username"></h1>
+                <label id="rankLabel"></label>
+            </div>
+        </div>
+        
+        <ul>
+            <li id="tabel-li" class="active">
+              <ion-icon name="grid-outline"></ion-icon>
+              <span>Tabel <ion-icon name="grid"></ion-icon></span>
+            </li>
+            <li id="cashier-li">
+              <ion-icon name="cart-outline"></ion-icon>
+              <span>Kasir <ion-icon name="wallet"></ion-icon></span>
+            </li>
+            <li id="history-li">
+              <ion-icon name="time-outline"></ion-icon>
+              <span>Histori <ion-icon name="time"></ion-icon></span>
+            </li>
+            <li id="settings-li">
+              <ion-icon name="settings-outline"></ion-icon>
+              <span>Pengaturan <ion-icon name="settings"></ion-icon></span>
+            </li>
+          </ul>
+          
+    </div>
+    <div id="upBar-lang" class="upBar">
+      <div class="innerDiv">
+      <textarea style="display: none;" id="textarea_backup" cols="30" rows="10"></textarea>
+      <button style="display: none;" onclick="uploadToLocalStorage()">Restore</button>
+      <div class="saldoPerusahaan">
+        <label for="">Saldo saat ini</label>
+    <h1 id="saldo_perusahaan"></h1>
+    </div>
+    <div class="searchbarDiv">
+      <label for="kode_input" id="searchlabels">Cari barang</label>
+      <br>
+      <input placeholder="Kode barang" id="kode_input" type="text">
+      <button id="check-btn"><ion-icon name="search"></ion-icon></button>
+    </div>
+      </div>
+      
+    </div>
+    <div style="display: none;" id="histori_body"></div>
+    <div id="table_holder" class="table_holder">
+        <br>
+        <br>
+        <br>
+        <h1 style="margin-left:170px;border-bottom: 2px solid rgb(119, 179, 189);line-height: 50px;" id="tab_name">Tabel Barang</h1>
+        <br>
+        <table style="display: none;" id="histori_table">
+          <thead>
+            <tr>
+              <th>Tanggal</th>
+              <th>Jam</th>
+              <th>Total Harga (Rp)</th>
+              <th>Barang Dibeli</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="histori_body_c"></tbody>
+        </table>
+        <div onclick="displayInputDiv()" class="displayInputDiv" id="display-input-div">Input<div>+</div></div>
+        <div style="display: none;" id="console-box">
+          <div class="left-bar">
+          <input id="kode_input_cashier" type="text" placeholder="Kode Barang">
+          <br>
+          <input id="quantity_input" type="number" placeholder="QTY" autocomplete="0">
+          <button id="tambah_button">+</button>
+          </div>
+          <div class="right-bar">
+            <audio id="beep" src="beep.mp3"></audio>
+            <video style="display: none;" id="video" autoplay></video>
+            <div id="scan-button" class="qr-btn">Scan QR  <ion-icon name="qr-scanner"></ion-icon></div>
+            <div id="aktifKamera" class="cam-btn">
+              <ion-icon name="camera"></ion-icon>
+            </div>
+            <p id="scan-result" style="float: left;">Scan QR nonaktif <span id="error-message"></span></p>
+          </div>
+          <br>
+          <h1>Rp<span id="total_harga">0</span></h1>
+        </div>
+        <div style="display: none;" id="breaker-br">
+          <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        </div>
+        
+        <button style="display: none;" id="bayar_button" class="bayar-btn">Bayar <ion-icon name="cash"></ion-icon></button>
+        <br>
+        <br>
+        <table id="result-table">
+            <thead>
+              <tr>
+                <th>Kode Barang</th>
+                <th>Nama Barang</th>
+                <th>Harga</th>
+                <th>QTY</th>
+                <th id="editNCell">Edit Nama</th>
+                <th id="editPCell">Edit Harga</th>
+                <th id="addCell">Tambah QTY</th>
+                <th id="deleteCell"></th>
+              </tr>
+            </thead>
+            <tbody id="result-body">
+            </tbody>
+            
+          </table>
+    </div>
+    
+    <div id="inputBarangDiv">
+        <div id="closeDivBtn"><ion-icon name="close"></ion-icon></div>
+        <h1 style="margin-top: 32px;user-select: none;"><ion-icon style="color: rgb(167, 201, 206);" name="create"></ion-icon> Input Barang</h1>
+        <br>
+        <label for="kode-input">Kode Barang</label>
+        <br>
+        <input value="GD67JU6D" id="kode-input" style="width: 100px;color: rgb(119, 179, 189);" type="text" readonly>
+        <button onclick="generateCode()" title="Refresh" id="generateCodeBtn"><ion-icon name="repeat"></ion-icon></button>
+        <br>
+        <label for="nama-input">Nama Barang</label>
+        <input id="nama-input" type="text">
+        <br>
+        <label for="harga-input">Harga Barang</label>
+        <input id="harga-input" type="number">
+        <br>
+        <label for="quantity-input">Jumlah Barang</label>
+        <br>
+        <input min="1" max="99999999999" id="quantity-input" type="number" style="width: 100px;">
+        <br>
+        <button id="submit-btn"><ion-icon name="add"></ion-icon></button>
+    </div>
+    
+
+    <script src="kasirQRScript.js"></script>
+    <script src="appAnimationScript.js"></script>
+    <script src="settingsAnimationScript.js"></script>
+    <script src="databaseScript.js"></script>
+    <script>
+       $("#inputBarangDiv").draggable()
+       document.getElementById("closeDivBtn").addEventListener("click", function(){
+        document.getElementById("inputBarangDiv").style.transform = "scale(0)"
+        document.getElementById("inputBarangDiv").style.transition = "0.2s linear"
+        setTimeout(() => {
+            document.getElementById("inputBarangDiv").style.transition = 0;
+        }, 400);
+       })
+       function displayInputDiv(){
+        document.getElementById("inputBarangDiv").style.transition = '0.15s ease'
+        document.getElementById("inputBarangDiv").style.transform = "scale(1)"
+        document.getElementById("inputBarangDiv").style.zIndex = 1;
+        setTimeout(() => {
+          document.getElementById("inputBarangDiv").style.transition = 'none';
+        }, 300);
+       }
+       
+    </script>
+    
+</body>
+</html>

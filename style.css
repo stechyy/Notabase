@@ -1,0 +1,1040 @@
+body{
+    background-color: #f8f8f8;
+    font-family: 'Nunito', sans-serif;
+}
+#inputBarangDiv{
+    height: 360px;
+    width: 260px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 0px 1px 0.1px grey;
+    border: 1px solid lightblue;
+    transform: scale(0);
+    position: fixed;
+
+}
+h1{
+    font-weight: 300;
+    color: rgb(40, 40, 40);
+    font-size: 30px;
+    text-indent: 20px;
+}
+label{
+    font-size: 14px;
+    color: rgb(70, 70, 70);
+    margin-left: 20px;
+}
+input{
+    height: 30px;
+    font-size: 14px;
+    border: 1px solid #dadada;
+    border-radius: 5px;
+    transition: 0.2s ease-in-out;
+    margin-left: 20px;
+    margin-top: 2px;
+    text-indent: 3px;
+}
+input:focus{
+    outline: none;
+    border-bottom: 1px solid rgb(112, 157, 172);
+}
+#generateCodeBtn{
+    height: 25px;
+    border: 1px;
+    font-size: 15px;
+    background-color: transparent;
+    color: rgb(87, 87, 87);
+    cursor: pointer;
+    transition: 0.1s;
+}
+#generateCodeBtn:hover{
+    color: black;
+}
+#generateCodeBtn:active{
+    transform: rotate(360deg);
+}
+#submit-btn{
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    font-size: 24px;
+    float: right;
+    margin-right: 30px;
+    background-color: rgb(167, 201, 206);
+    border: 0;
+    color: white;
+    box-shadow: 0px 0px 0px 4px rgba(211, 211, 211, 0.377);
+    cursor: pointer;
+    transition: 0.2s;
+}
+#submit-btn:hover{
+    box-shadow: 0px 0px 0px 5px rgba(211, 211, 211, 0.377);
+    
+}
+#submit-btn:active{
+    transform: scale(0.8);
+}
+#closeDivBtn{
+    height: 20px;
+    width: 20px;
+    float: right;
+    font-size: 20px;
+    margin: 10px;
+    color: lightgrey;
+    position: absolute;
+    margin-left: 225px;
+}
+#closeDivBtn:hover{
+    color: grey;
+}
+.sidebar{
+    height: 85%;
+width: 350px;
+background: linear-gradient(to right, #2f2f30, #404044);
+border-bottom-right-radius: 20px;
+color: white;
+float: left;
+position: fixed;
+
+}
+*{
+    margin: 0;
+}
+.sidebar ul {
+    flex: 1;
+list-style-type: none;
+margin: 0;
+padding: 0;
+}
+
+.sidebar li {
+padding: 15px 20px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+font-size: 17px;
+border-bottom-right-radius: 30px;
+border-bottom: 1px solid rgb(82, 82, 82);
+transition: 0.2s;
+}
+
+.sidebar li:hover {
+background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar li.active {
+background-color: rgba(255, 255, 255, 0.2);
+font-size: 19px;
+}
+
+.sidebar li span {
+margin-left: 10px;
+}
+#accountInfo{
+width: 100%;
+height: 220px;
+}
+.sidebar ion-icon{
+font-size: 24px;
+margin-left: 10px;
+}
+.account_pp{
+width: 120px;
+height: 120px;
+background-color: #e0e0e0;
+border-radius: 50%;
+margin-left: auto;
+margin-right: auto;
+}
+.user-icon {
+font-size: 80px;
+color: #333;
+
+}
+#accountInfo h1{
+color: white;
+margin-top: 20px;
+}
+.nameTag{
+height: max-content;
+width: 100%;
+margin-left: auto;
+margin-right: auto;
+text-align: center;
+}
+.nameTag label{
+color: rgb(150, 150, 150);
+}
+.upBar{
+height: 170px;
+width: 75%;
+background-color: rgb(240, 240, 240);
+box-shadow: 0px 1px 5px 0.5px lightgrey;
+border-bottom-right-radius: 30px;
+border-bottom-left-radius: 30px;
+float: right;
+}
+.table_holder{
+height: 100%;
+width: 80%;
+float: right;
+margin-bottom: 150px;
+margin-right: 50px;
+}
+table {
+width: 75%;
+border-collapse: collapse;
+margin-top: 20px;
+float: right;
+
+}
+
+th, td {
+padding: 10px;
+text-align: center;
+border-radius: 20px;
+}
+th{
+    border-right: 3px solid #f8f8f8;
+}
+td{
+    border-radius: 0;
+    border: 1px solid rgb(235, 235, 235);
+}
+td button{
+    width: 90px;
+    font-size: 15px;
+    border-radius:5px;
+    padding: 2px;
+    border: 1px solid rgb(119, 179, 189);
+    transition: 0.2s;
+}
+td button:hover{
+    cursor: pointer;
+    background-color: white;
+    transform: scale(1.050);
+}
+
+th {
+background-color: rgb(119, 179, 189);
+color: white;
+font-weight: 400;
+}
+
+tr:nth-child(even) {
+background-color: #f2f2f2;
+}
+
+tr:nth-child(odd) {
+background-color: white;
+}
+
+tr:hover {
+background-color: #e0e0e0;
+}
+
+td {
+background-color: white;
+color: rgb(40, 40, 40);
+}
+
+.displayInputDiv{
+float: right;
+height: 45px;
+width: 100px;
+background-color: rgb(222, 223, 223);
+border-radius: 50px;
+font-size: 17px;
+text-align: center;
+text-indent: 20px;
+line-height: 45px;
+margin-right: 20px;
+color: rgb(48, 66, 70);
+user-select: none;
+cursor: pointer;
+margin-right: 800px;
+transition: 0.3s;
+
+}
+.displayInputDiv div{
+height: 50px;
+width: 50px;
+border-radius: 20px;
+background-color: rgb(77, 108, 114);
+margin-left: -20px;
+margin-top:-46.5px;
+text-indent: 0;
+font-weight:100;
+text-align: center;
+font-size: 35px;
+color: white;
+line-height: 50px;
+cursor: pointer;
+user-select: none;
+
+}
+.displayInputDiv:hover{
+background-color: rgb(211, 211, 211);
+}
+.login-screen{
+height: 100%;
+width: 100%;
+background-color: rgb(77, 116, 124);
+position: fixed;
+margin: 0;
+z-index: 2000;
+animation: changeColor 8s infinite;
+animation-direction:alternate;
+display: none;
+}
+@keyframes changeColor {
+    0% {
+      background-color: rgb(77, 116, 124);
+    }
+    50% {
+      background-color: rgb(91, 141, 151);
+    }
+    100% {
+      background-color: rgb(45, 83, 90);
+    }
+  }
+.loading-screen{
+    height: 100%;
+width: 100%;
+background-color: rgba(197, 196, 196, 0.123);
+backdrop-filter: blur(5px);
+position: fixed;
+margin: 0;
+z-index: 20000;
+display: none;
+}
+.loading-outline{
+    height: 25px;
+    width: 25px;
+    border: 10px solid rgb(119, 179, 189);
+    outline: 5px solid rgb(77, 108, 114);
+    position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+border-radius: 5px;
+animation: putar 2s linear infinite;
+}
+@keyframes putar {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.loading-screen p{
+    position: absolute;
+top: 50%;
+left: 51.5%;
+transform: translate(-50%, 280%);
+font-size: 18px;
+text-align: center;
+color: rgb(48, 66, 70);
+}
+.login-container{
+height: 370px;
+width: 320px;
+background-color: white;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+border-radius: 5px;
+box-shadow: 0px 0px 3px lightgrey;
+transition: 0.3s;
+}
+.login-screen input{
+width: 260px;
+}
+.login-screen ion-icon{
+color: rgb(80, 144, 158);
+}
+.login-container button{
+padding: 10px;
+width: 70%;
+background-color: transparent;
+border: 2px solid rgb(77, 108, 114);
+font-size: 16px;
+margin-left: 45px;
+margin-top: 20px;
+color: rgb(77, 108, 114);
+border-radius: 5px;
+box-shadow: 3px 3px ;
+transition: 0.2s;
+}
+.login-screen button:hover{
+background-color: rgb(77, 108, 114);
+color: white;
+box-shadow: 3px 3px rgb(70, 70, 70);
+cursor: pointer;
+letter-spacing: 0.8px;
+}
+.login-screen button:active{
+box-shadow: 0px 0px;
+margin-left: 48px;
+margin-top: 23px;
+}
+.innerDiv{
+    height: 90%;
+    width: 90%;
+    float: right;
+    margin-right: 20px;
+    border-bottom: 1px solid rgb(80, 144, 158);
+    border-right: 8px solid rgb(80, 144, 158);
+    border-bottom-right-radius: 1200px;
+    border-bottom-left-radius: 120px;
+    outline: 4px solid rgb(167, 201, 206);
+    border-top-left-radius:70px;
+    box-shadow: 0px 0px 3px 4px lightgrey;
+    border-left: 0;
+    
+}
+#saldo_perusahaan{
+    float: right;
+    font-weight: 400;
+}
+.saldoPerusahaan{
+    height: 100px;
+    width: 200px;
+    float: right;
+    margin: 20px;
+    margin-right: 50px;
+}
+.saldoPerusahaan label{
+    font-size: 17px;
+    color: rgb(80, 144, 158);
+}
+.saldoPerusahaan button{
+    float: right;
+    padding: 1px;
+    font-size: 14px;
+    border-bottom-right-radius: 20px;
+    width: 130px;
+    border-top-left-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    background-color: rgb(119, 179, 189);
+    color: white;
+    border: 2px solid rgb(77, 108, 114);
+    transition: 0.2s;
+}
+.saldoPerusahaan button:hover{
+margin-top: -2px;
+background-color: rgb(183, 215, 221);
+color: rgb(60, 81, 85);
+box-shadow: 2px 2px rgb(77, 108, 114);
+}
+.saldoPerusahaan button:active{
+    margin-top: 0px;
+    box-shadow: 0px 0px rgb(77, 108, 114);
+}
+.searchbarDiv{
+    height: 80px;
+    width: 55%;
+    margin-top: 50px;
+
+}
+.searchbarDiv input{
+    width: 65%;
+}
+.searchbarDiv button{
+    padding: 8px;
+    font-size: 22px;
+    border-radius: 50%;
+    background-color: rgb(119, 179, 189);
+    color: white;
+    border: 1px solid rgb(119, 179, 189);
+    transition: 0.2s;
+}
+.searchbarDiv button:hover{
+    cursor: pointer;
+    background-color: rgb(165, 215, 224);
+}
+.searchbarDiv button:active{
+    background-color: rgb(167, 201, 206);
+}
+#console-box{
+    height: 90px;
+    width: 70%;
+    background-color: #efefef;
+    box-shadow: 0px 0px 1px 1px lightgrey;
+    float: right;
+    border-radius: 5px;
+    border-top-left-radius: 30px;
+    border-right: 2.5px solid rgb(165, 215, 224);
+    border-bottom: 1.5px solid rgb(165, 215, 224);
+    border-bottom-right-radius: 50px;
+}
+#console-box input{
+    margin-top: 10px;
+    border-top-left-radius: 15px;
+}
+#console-box button{
+    font-size: 28px;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    color: white;
+    background-color: rgb(80, 144, 158);
+    border: 1px solid rgb(183, 215, 221);
+    box-shadow: 2px 2px rgb(77, 113, 121);
+    border-left: 0;
+    border-top: 0;
+    transition: ease-in 0.1s;
+}
+#console-box button:hover{
+    background-color: rgb(119, 179, 189);
+}
+#console-box button:active{
+    margin: 2px;
+    box-shadow: 0px 0px rgb(77, 113, 121);
+}
+#console-box h1{
+    float: right;
+    margin-right: 50px;
+}
+.config-btn{
+    height: 80px;
+    width: 100px;
+    background-color: red;
+    float: right;
+}
+.left-bar{
+   height: 100%;
+   width: 255px;
+   background-color: re;
+   float: left;
+}
+.right-bar{
+    height: 100%;
+    width: 255px;
+    background-color: gren;
+    float: left;
+}
+.right-bar .qr-btn{
+    width: 100px;
+    height: 25px;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: rgb(124, 195, 223);
+    text-align: center;
+    line-height: 25px;
+    user-select: none;
+    cursor: pointer;
+    margin: 20px;
+    color: rgb(82, 82, 82);
+    box-shadow: 0px 0px 1px 4px rgba(211, 211, 211, 0.562);
+    float: left;
+    transition: 0.17s;
+}
+.right-bar .qr-btn:hover{
+    margin-top: 17px;
+    background-color: rgb(159, 212, 233);
+}
+.right-bar .cam-btn{
+height: 17px;
+width: 30px;
+float: left;
+border-radius: 5px;
+text-align: center;
+line-height: 30px;
+margin-top: 6px;
+margin-left: -18px;
+transition: 0.1s;
+color: rgb(170, 170, 170);
+cursor: pointer;
+}
+@keyframes blinkbtn {
+    0% {color: rgb(170,170,170);}
+    50%{color: rgb(66, 132, 158);}
+    100% {color: rgb(170,170,170);}
+}
+.right-bar .cam-btn:hover{
+    color: grey;
+}
+.right-bar p{
+    font-size: 12.5px;
+    margin-top: -12px;
+    margin-left: 20px;
+    color: grey;
+    user-select: none;
+}
+.bayar-btn{
+    float: right;
+    padding: 6px;
+    width: 100px;
+    border-bottom-right-radius: 30px;
+    font-size: 17px;
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+    background-color: rgb(83, 189, 83);
+    color: white;
+    border: 0px;
+    outline: 2px solid rgb(15, 126, 15);
+    border: 1px solid ;
+    cursor: pointer;
+    transition: 0.25s;
+}
+.bayar-btn:hover{
+    background-color: rgb(124, 212, 124);
+}
+.bayar-btn:active{
+    transform: scale(0.9);
+
+}
+.refreshBtn{
+    float: right;
+    font-size: 19px;
+    color: rgb(74, 121, 129);
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: transparent;
+    border: none;
+    
+}
+.refreshBtn:active{
+    animation: putar 0.2s;
+}
+.problem_label{
+    color: rgb(156, 156, 156);
+    font-size: 13.5px;
+}
+.problem_label:hover{
+    color: rgb(66, 132, 158);
+    cursor: pointer;
+}
+.settings-box label{
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.settings-box p{
+    font-size: 15px;
+}
+.settings-screen{
+    height: 100%;
+width: 100%;
+background-color: rgba(197, 196, 196, 0.123);
+backdrop-filter: blur(5px);
+position: fixed;
+margin: 0;
+z-index: 500;
+}
+.settings-box {
+height: 400px;
+width: 700px;
+background-color: rgb(236, 234, 234);
+margin-left: auto;
+margin-right: auto;
+border-radius: 6px;
+border: 1px solid rgb(119, 179, 189);
+display: flex;
+position: fixed;
+transition: 0.2s ease-in;
+top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    
+}
+
+.settings-sidebar {
+width: 200px;
+background-color: #f0f0f0;
+padding: 10px;
+border-right: 1px solid lightgrey;
+}
+
+.settings-sidebar ul {
+list-style-type: none;
+margin: 0;
+padding: 0;
+}
+.settings-sidebar .active{
+background-color: rgb(119, 179, 189);
+color: white;
+border: 1px solid white;
+outline: 2px solid rgb(119, 179, 189);
+font-size: 17px;
+}
+.settings-sidebar .active:hover{
+background-color: rgb(104, 157, 167);
+}
+.settings-sidebar li {
+margin-bottom: 10px;
+background-color: #d4d4d4;
+cursor: pointer;
+border: none;
+color: rgb(46, 63, 66);
+text-decoration: none;
+display: block;
+width: 200px;
+height: 35px;
+font-size: 15px;
+box-shadow: 1px 1px 0px 0.01px rgb(158, 183, 187);
+line-height: 35px;
+border-radius: 4px;
+transition-duration: 0.4s;
+-webkit-transition-duration: 0.4s;
+text-indent: 10px;
+border-bottom-right-radius: 20px;
+border: 1px transparent;
+outline: 2px transparent;
+transition: 0.2s ease-in-out;
+}
+
+.settings-sidebar li:hover {
+background-color: #b4b4b4;
+color: white;
+font-size: 17px;
+}
+
+
+.settings-container {
+flex-grow: 1;
+background-color: #ebebeb;
+overflow-y: scroll;
+
+}
+.settings-sidebar h2{
+font-weight: 300;
+font-family: 'Nunito', sans-serif;
+font-size: 26px;
+
+}
+.settings-container .marginazed{
+height: 84%;
+width: 84%;
+font-family: 'Noto Sans', sans-serif;
+margin-left: auto;
+margin-right: auto;
+font-size: 16px;
+color: rgb(65, 65, 65);
+font-weight: 400;
+}
+.circle-pp{
+height: 80px;
+width: 80px;
+border-radius: 50%;
+background-color: rgb(194, 194, 194);
+margin-left: auto;
+margin-right: auto;
+}
+.account-container{
+height: max-content;
+width: max-content;
+line-height: 0;
+}
+.account-container h2{
+text-align: center;
+}
+.account-container label{
+font-size: 13px;
+text-align: center;
+}
+.marginazed button{
+margin-top: 8px;
+padding: 4px;
+background-color: rgb(187, 200, 202);
+color: rgb(0, 0, 0);
+border-radius: 4px;
+min-width: 120px;
+font-size: 15px;
+font-family: 'Noto Sans';
+border: 0;
+transition: 0.2s;
+cursor: pointer;
+}
+.marginazed button:hover{
+background-color: rgb(208, 218, 219);
+}
+.chooser-btn button{
+height: 35px;
+font-size: 15px;
+width: 180px;
+background-color: white;
+border: 2px solid rgb(119, 179, 189);
+text-align: left;
+text-indent: 5px;
+font-weight: 300;
+color: rgb(66, 86, 90);
+outline: 2px solid rgb(255, 255, 255);
+font-family: 'Nunito';
+}
+.chooser-btn button:hover{
+background-color: rgba(215, 225, 226, 0.699);
+}
+.settings-box h3{
+line-height: 0;
+}
+.chooser-btn .active{
+background-color: rgb(119, 179, 189);
+color: white;
+outline: 2px solid rgb(119, 179, 189);
+border: 2px solid white;
+}
+.chooser-btn .active:hover{
+background-color: rgb(104, 157, 167);
+}
+.app-version{
+    height: 120px;
+    width: 230px;
+    float: right;
+    border-left: 2px solid rgb(65, 128, 141);
+    border-bottom: 4px solid rgb(86, 149, 161);
+    border-radius: 20px;
+}
+.app-version h2{
+    color: rgb(48, 93, 102);
+    font-weight: 600;
+    margin-left: 10px;
+    line-height: 1;
+}
+.app-version label{
+    line-height: 0;
+    color: gray;
+    margin-left: 10px;
+}
+.settings-close{
+    height: max-content;
+    width: max-content;
+    float: right;
+    color: rgb(190, 190, 190);
+    text-align: center;
+    font-size: 38px;
+    margin: 10px;
+    transition:  0.2s ease-out ;
+}
+.settings-close:hover{
+    color: rgb(89, 100, 102);
+}
+textarea{
+    border: 1px solid rgb(104, 157, 167);
+    border-radius: 5px;
+    outline: none;
+    font-family: Arial, Helvetica, sans-serif;
+    resize: none;
+    font-size: 14px;
+
+}
+.settings-box h2{
+    line-height: 50px;
+    user-select: none;
+}
+.settings-box h3{
+    line-height: 20px;
+    user-select: none;
+}
+.settings-box h1{
+    line-height: 50px;
+    user-select: none;
+}
+.settings-box p{
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+#chooserBtn{
+    text-align: left;
+    text-indent: 0;
+    background-color: rgb(104, 157, 167);
+    padding: 7px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Nunito';
+    transition: 0.2s;
+}
+.chooserBtn:hover{
+    background-color: rgb(124, 195, 223);
+}
+.id-tr{
+    color: rgb(94, 138, 146);
+}
+.stars {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+  .star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    animation: twinkle 1s infinite, moveStar 5s infinite linear;
+  }
+@keyframes twinkle {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes moveStar {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(-200px, -200px);
+    }
+  }
+  .problemLogin-div{
+    height: 280px;
+    width: 480px;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+z-index: 1;
+border-radius: 5px;
+box-shadow: 0px 0px 3px lightgrey;
+  }
+  .problemLogin-div button{
+    font-size: 17px;
+    margin-top: 10px;
+    margin-left: 40px;
+    padding: 8px;
+    font-family: 'Nunito';
+    border: 3px solid rgb(104, 157, 167);
+    border-right: 2px solid rgb(104, 157, 167);
+    border-bottom: 2px solid rgb(104, 157, 167);
+    background-color: white;
+    border-radius: 5px;
+    transition: 0.2s;
+    color: rgb(63, 94, 100);
+    border-bottom-right-radius: 30px;
+
+    
+  }
+  .problemLogin-div h1{
+    margin: 20px;
+  }
+  .problemLogin-div .closeBtn{
+    font-size: 40px;
+    float: right;
+    margin: 10px;
+    color: grey;
+    cursor: pointer;
+  }
+  .helperLogin-div{
+    height: 380px;
+    width: 480px;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+z-index: 1;
+border-radius: 5px;
+box-shadow: 0px 0px 3px lightgrey;
+  }
+  .helperLogin-div h1{
+    font-size: 28px;
+    margin: 30px;
+    border-bottom: 3px solid rgb(104, 157, 167);
+    text-indent: 0;
+  }
+  .helperLogin-div h2{
+    font-family: 'Nunito';
+    font-weight: 100;
+    font-size: 18px;
+    margin-left:20px;
+  }
+  .helperLogin-div button{
+    margin-top: 8px;
+padding: 4px;
+background-color: rgb(220, 233, 235);
+color: rgb(0, 0, 0);
+border-radius: 4px;
+min-width: 120px;
+font-size: 15px;
+font-family: 'Noto Sans';
+border: 0;
+transition: 0.2s;
+cursor: pointer;
+    margin-top: 10px;
+    margin-left: 42px;
+  }
+  .helperLogin-div button:hover{
+    transition: 0.2s;
+    border-radius: 5px;
+    font-family: 'Nunito';
+  }
+  .helperLogin-div button:active{
+    margin-right: 70px;
+    margin-top: 13px;
+  }
+  input[type="file"]{
+    border-radius: 5px;
+    font-family: 'Nunito';
+    margin-left: 40px;
+    margin-top: 8px;
+    height: 24px;
+    border: 1px solid rgb(104, 157, 167);
+    border-radius: 5px;
+  }
+  #deleteCell{
+    width: 90px;
+  }
+  #qr-code-container {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    background-color: white;
+    border: 6px solid rgb(39, 39, 39);
+    border-radius: 10px;
+    padding: 15px;
+  }
+  #qr-code {
+    width: 200px;
+    height: 200px;
+    padding: 15px;
+  }
+  #qr-meaning {
+    text-align: center;
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  #download-button {
+    margin-top: 10px;
+  }
+  #downloadQR-div{
+    position: absolute;
+  }
+  /* .anim-banner{
+    background-color: white;
+  }
+  .anim-banner #welcome-banner{
+    color: rgb(104, 157, 167);
+    padding: 5px;
+  } */
+
+  #welcome-banner{
+    color: rgb(72, 121, 131);
+    background-color: white;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 30px;
+    border-radius: 20px;
+    width: max-content;
+    transition: 0.2s;
+    margin-left: auto;
+    margin-right: auto;
+    animation: changeText 0.2s ease;
+  }
+  #signup-container button{
+    width: 200px;
+    float: right;
+    margin-right: 40px;
+  }
