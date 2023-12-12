@@ -35,7 +35,7 @@ Sayangnya untuk saat ini, Notabase versi 1.0.1 masih belum bisa digunakan di mob
 
 ### Q: Apakah data saya aman di Notabase tanpa kebocoran?
 
-Notabase tidak akan bisa membaca data anda karena Notabase dibuat secara client-side scripting yang melakukan pemrosesan data 100% dilaptop penggunanya.
+Siapapun bahkan Notabase sendiri tidak akan bisa membaca data anda karena Notabase dibuat secara client-side scripting yang melakukan pemrosesan data 100% pada device penggunanya.
 
 ### Q: Apa kekurangan dari Notabase 1.0.1 ini?
 
